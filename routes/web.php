@@ -13,6 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/** forma comprimida de rota simplificada */
+Route::get('/', 'HomeController');
+Route::view('/teste', 'teste');
+
+
+Route::prefix('/config')->group(function () {
+
+    Route::get('/', 'Admin\ConfigController@index');
+    Route::post('/', 'Admin\ConfigController@index');
+
+    Route::get('info', 'Admin\ConfigController@info');
+    Route::get('permissoes', 'Admin\ConfigController@permissoes');
 });
+
+Route::fallback(function () {
+    return view('404');
+});
+
+
+Route::get('/home', 'HomeController@index')->name('home');
