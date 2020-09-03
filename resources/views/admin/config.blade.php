@@ -1,7 +1,14 @@
-<h1>Configurações</h1>
-<hr>
+@extends('layouts.admin')
 
-meu nome é {{$nome}}. E tenho {{$idade}} anos.
+@section('title', 'Configurações')
+
+
+@section('content')
+<h1>Configurações</h1>
+
+meu nome é {{$nome}}. E tenho {{$idade}} anos. <br/>
+
+versão: {{$versao}}
 
 <form method="POST">
     @csrf
@@ -21,3 +28,4 @@ meu nome é {{$nome}}. E tenho {{$idade}} anos.
 
 </form>
 <a href="/config/info">Informações</a>
+@endsection
