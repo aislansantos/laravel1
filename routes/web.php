@@ -20,17 +20,17 @@ Route::view('/teste', 'teste');
 
 Route::prefix('/tarefas')->group(function() {
     
-    Route::get('/', 'TarefasController@list'); // listagem de tarefas
+    Route::get('/', 'TarefasController@list')->name('tarefas.list'); // listagem de tarefas
 
-    Route::get('add', 'TarefasController@add'); // tela de adiçã
+    Route::get('add', 'TarefasController@add')->name('tarefas.add'); // tela de adição
     Route::post('add', 'TarefasController@addAction'); // Ação de adiçao
 
-    Route::get('edit/{id}', 'TarefasController@edit'); // tela de edição
+    Route::get('edit/{id}', 'TarefasController@edit')->name('tarefas.edit'); // tela de edição
     Route::post('edit/{id}', 'TarefasController@editAction'); // ação de edição
 
-    Route::get('delete/{id}', 'TarefasController@del'); //ação de deletar
+    Route::get('delete/{id}', 'TarefasController@del')->name('tarefas.del'); //ação de deletar
 
-    Route::get('marcar/{id}', 'TarefasController@done'); // marcar resolvido ou não resolvido
+    Route::get('marcar/{id}', 'TarefasController@done')->name('tarefas.done'); // marcar resolvido ou não resolvido
 
 });
 
