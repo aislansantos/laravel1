@@ -13,9 +13,10 @@
 
     <form method="post">
         @csrf
-        <input type="text" name="name" placeholder="Digite seu nome" /><br />
-        <input type="email" name="email" id="" placeholder="digite um e-mail"><br/>
-        <input type="password" name="password" id="" placeholder="digite uma senha"><br/>
+    <input type="text" name="name" placeholder="Digite seu nome" value="{{old('name')}}" /><br />
+        <input type="email" name="email" id="" placeholder="Digite um e-mail" value="{{old('email')}}"><br/>
+        <input type="password" name="password" id="" placeholder="Digite uma senha"><br/>
+        <input type="password" name="password_confirmation" id="" placeholder="Confirme uma senha"><br/>
 
         <input type="submit" value="Cadastrar">
     </form>

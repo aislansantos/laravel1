@@ -21,7 +21,7 @@ Route::get('/login', 'Auth\LoginController@index')->name('login');
 Route::post('/login', 'Auth\LoginController@authenticate');
 
 
-Route::get('/resgister', 'Auth\RegisterController@index')->name('register');
+Route::get('/register', 'Auth\RegisterController@index')->name('register');
 Route::post('/register', 'Auth\RegisterController@register');
 
 
