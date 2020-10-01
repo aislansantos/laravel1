@@ -5,9 +5,13 @@
 
 @section('content')
 
-@if(session('warning'))
+@if($errors->any())
     <x-alert>
-       {{ session('warning') }}
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
     </x-alert>
 @endif
 

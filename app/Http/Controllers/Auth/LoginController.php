@@ -47,7 +47,7 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $creds = $request->only(['email', 'passowrd']);
+        $creds = $request->only(['email', 'password']);
 
         if (Auth::attempt($creds)) {
             return redirect()->route('config.index');
@@ -55,5 +55,10 @@ class LoginController extends Controller
             return redirect()->route('login')
             ->with('warning', 'emal e/ou senha invalidos');
         }
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

@@ -5,12 +5,24 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ConfigController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
-        $nome = "aislan";
+
+        $user = $request->user();
+        $nome = $user->name;
+
+
+        
+
         $idade = 15;
         $cidade = $request->input('cidade');
 
@@ -25,7 +37,9 @@ class ConfigController extends Controller
             'nome' => $nome,
             'idade' => $idade,
             'cidade' => $cidade,
-            'lista' => $lista
+            'lista' => $lista,
+
+            'showform' => Gate::allows('see-form')
 
         ];
 

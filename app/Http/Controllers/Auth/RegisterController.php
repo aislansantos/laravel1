@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -49,16 +50,18 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        $data = $request->only(['name', 'email', 'password']);
+        $data = $request->only(['name', 'email', 'password', 'password_confirmation']);
         $validator = $this->validator($data);
 
         if ($validator->fails()) {
             return redirect()->route('register')
-            ->withErrors($validator)
-            ->withInput();
-        }else {
-            
+                ->withErrors($validator)
+                ->withInput();
         }
+
+        $user = $this->create($data);
+        Auth::login($user);
+        return redirect()->route('config.index');
     }
 
     /**
